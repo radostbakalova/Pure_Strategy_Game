@@ -87,3 +87,53 @@ size_t System::managePlayerChoice() {
 	}
 	return choice;
 }
+
+void System::run() {
+	cout << "< THE GAME OF PURE STRATEGY >" << endl;
+	Seed seed;
+	seed.loadSeed("seed.txt");
+	data.loadFileData("data.txt");
+	while (true) {
+		size_t choice;
+		if (!player1.isLogged) {
+			manager.managePlayer(player1, data.users);
+		}
+		if (!player2.isLogged) {
+			manager.managePlayer(player2, data.users);
+		}
+		Game game(player1, player2);
+		choice = manageGameChoice();
+		switch (choice) {
+		case 1: game.playGame(seed.value, data.users);
+			break;
+		case 2: choice = managePlayerChoice();
+			if (choice == 1) {
+				data.printUserStatistics(player1.username);
+				break;
+			}
+			if (choice == 2) {
+				data.printUserStatistics(player2.username);
+				break;
+			}
+			data.printUserStatistics(player1.username);
+			data.printUserStatistics(player2.username);
+			break;
+		case 3: choice = managePlayerChoice();
+			if (choice == 1) {
+				manager.logoutUser(player1);
+				break;
+			}
+			if (choice == 2) {
+				manager.logoutUser(player2);
+				break;
+			}
+			manager.logoutUser(player1);
+			manager.logoutUser(player2);
+			break;
+		case 4: data.saveDataOn("data.txt");
+			seed.saveSeedOn("seed.txt");
+			std::exit(0);
+		default: cout << "Failed to load game option! Please restart the program." << endl;
+		}
+	}
+}
