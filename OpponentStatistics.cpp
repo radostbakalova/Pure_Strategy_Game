@@ -7,3 +7,7 @@ const int IGNORE_LIMIT = 1000;
 size_t OpponentStatistics::getSize() {
 	return statistics.size();
 }
+
+void OpponentStatistics::add(Statistic stat) {
+	statistics.push_back(stat);
+}
