@@ -13,3 +13,12 @@ void Seed::loadSeed(std::string fileName) {
 	input >> value;
 	input.close();
 }
+
+void Seed::saveSeedOn(std::string fileName) {
+	std::ofstream output = std::ofstream(fileName);
+	if (!output.is_open()) {
+		cout << "Program failed save new seed!" << endl;
+	}
+	output << value;
+	output.close();
+}
