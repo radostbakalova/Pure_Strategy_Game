@@ -76,3 +76,10 @@ void Deck::printDeck() {
 	}
 	cout << endl;
 }
+
+void Deck::emptyDeck() {
+	size_t deckSize = deck.size();
+	for (size_t i = 0; i < deckSize; i++) {
+		deck.pop_back();
+	}
+}
