@@ -18,3 +18,14 @@ void Deck::initialize() {
 		deck.push_back(cardValue++);
 	}
 }
+
+void Deck::shuffle(unsigned int& seedValue) {
+	srand(seedValue);
+	for (size_t i = MAX_SIZE_OF_DECK - 1; i > 0; i--) {
+		size_t positionToSwap = rand() % (i + 1);
+		size_t temporaryValue = deck.at(i);
+		deck.at(i) = deck.at(positionToSwap);
+		deck.at(positionToSwap) = temporaryValue;
+	}
+	seedValue++;
+}
