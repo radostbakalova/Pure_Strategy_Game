@@ -47,3 +47,10 @@ void OpponentStatistics::loadFileData(std::ifstream& input) {
 		stat.loadFromFile(input);
 	}
 }
+
+void OpponentStatistics::printStatistics() {
+	for (Statistic& stat : statistics) {
+		stat.printStatistic();
+	}
+	cout << endl;
+}
