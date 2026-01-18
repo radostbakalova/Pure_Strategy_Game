@@ -20,3 +20,14 @@ bool OpponentStatistics::exist(std::string& username) {
 	}
 	return false;
 }
+
+void OpponentStatistics::recordGame(std::string& opponent, bool won1) {
+	for (size_t i = 0; i < statistics.size(); i++) {
+		if (opponent == statistics.at(i).opponentName) {
+			(statistics.at(i).gamesPlayed)++;
+			if (won1) {
+				(statistics.at(i).gamesWon++);
+			}
+		}
+	}
+}
