@@ -11,3 +11,12 @@ size_t OpponentStatistics::getSize() {
 void OpponentStatistics::add(Statistic stat) {
 	statistics.push_back(stat);
 }
+
+bool OpponentStatistics::exist(std::string& username) {
+	for (size_t i = 0; i < statistics.size(); i++) {
+		if (username == statistics.at(i).opponentName) {
+			return true;
+		}
+	}
+	return false;
+}
