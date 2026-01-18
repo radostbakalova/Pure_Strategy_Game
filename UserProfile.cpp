@@ -17,3 +17,7 @@ UserProfile::UserProfile(std::string& username, std::string& password) {
 	totalGamesPlayed = 0;
 	totalGamesWon = 0;
 }
+
+std::string UserProfile::getUsername() {
+	return username;
+}
