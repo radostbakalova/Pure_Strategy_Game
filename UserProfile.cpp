@@ -25,3 +25,16 @@ std::string UserProfile::getUsername() {
 std::string UserProfile::getPassword() {
 	return password;
 }
+
+void UserProfile::recordGame(std::string& currentOpponent, bool won1, bool won2) {
+	this->totalGamesPlayed++;
+	if (won1) {
+		this->totalGamesWon++;
+	}
+	if (opponentStatistics.exist(currentOpponent)) {
+		opponentStatistics.recordGame(currentOpponent, won1);
+		return;
+	}
+	size_t result = won1 ? 1 : 0;
+	opponentStatistics.add(Statistic(currentOpponent, 1, result));
+}
