@@ -52,3 +52,27 @@ void Deck::addCard(size_t value) {
 bool Deck::isEmpty() {
 	return deck.empty();
 }
+
+void Deck::printDeck() {
+	for (size_t i = 0; i < deck.size(); i++) {
+		size_t card = deck.at(i);
+		if (card == 1) {
+			cout << "A  ";
+			continue;
+		}
+		if (card == 11) {
+			cout << "J  ";
+			continue;
+		}
+		if (card == 12) {
+			cout << "D  ";
+			continue;
+		}
+		if (card == 13) {
+			cout << "K  ";
+			continue;
+		}
+		cout << card << "  ";
+	}
+	cout << endl;
+}
