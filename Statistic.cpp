@@ -21,3 +21,13 @@ void Statistic::printStatistic() {
 		gamesPlayed << " games played (" <<
 		gamesWon << "/" << wonGamesPercent << "% wins)" << endl;
 }
+
+void Statistic::loadFromFile(std::ifstream& input) {
+	if (!input.good()) {
+		cout << "Could not open file." << endl;
+		return;
+	}
+	input >> opponentName;
+	input >> gamesPlayed;
+	input >> gamesWon;
+}
