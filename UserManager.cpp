@@ -123,3 +123,39 @@ void UserManager::loginUser(Player& player, std::vector<UserProfile>& users) {
 void UserManager::logoutUser(Player& player) {
     player.logoutPlayer();
 }
+
+void UserManager::managePlayer(Player& player, std::vector<UserProfile>& users) {
+    showLoginMenu(player);
+    size_t choice;
+    std::string input;
+    while (true) {
+        std::getline(cin, input);
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(IGNORE_LIMIT, '\n');
+            continue;
+        }
+        if (input.size() > 1) {
+            cout << "Invalid input! Please try again." << endl;
+            continue;
+        }
+        if (input[0] == '1') {
+            choice = 1;
+            break;
+        }
+        if (input[0] == '2') {
+            choice = 2;
+            break;
+        }
+        cout << "Invalid input! Please try again." << endl;
+    }
+    if (choice == 1) {
+        registerUser(player, users);
+        return;
+    }
+    if (choice == 2) {
+        loginUser(player, users);
+        return;
+    }
+    cout << "Failed to perform the action! Please restart the program." << endl;
+}
