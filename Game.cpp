@@ -150,3 +150,23 @@ size_t Game::playTurn(Player& player) {
 	player.remainingHands.removeCard(card);
 	return card;
 }
+
+void Game::printPlayersCard(size_t card) {
+	if (card == 1) {
+		cout << 'A';
+		return;
+	}
+	if (card == 11) {
+		cout << 'J';
+		return;
+	}
+	if (card == 12) {
+		cout << 'Q';
+		return;
+	}
+	if (card == 13) {
+		cout << 'K';
+		return;
+	}
+	cout << card;
+}
