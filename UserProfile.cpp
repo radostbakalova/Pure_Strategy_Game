@@ -21,3 +21,7 @@ UserProfile::UserProfile(std::string& username, std::string& password) {
 std::string UserProfile::getUsername() {
 	return username;
 }
+
+std::string UserProfile::getPassword() {
+	return password;
+}
