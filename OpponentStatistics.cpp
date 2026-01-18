@@ -31,3 +31,19 @@ void OpponentStatistics::recordGame(std::string& opponent, bool won1) {
 		}
 	}
 }
+
+void OpponentStatistics::loadFileData(std::ifstream& input) {
+	if (!input.good()) {
+		cout << "Could not open file." << endl;
+		return;
+	}
+	size_t size;
+	input >> size;
+	if (size == 0) {
+		return;
+	}
+	statistics.resize(size);
+	for (Statistic& stat : statistics) {
+		stat.loadFromFile(input);
+	}
+}
