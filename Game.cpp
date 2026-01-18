@@ -170,3 +170,30 @@ void Game::printPlayersCard(size_t card) {
 	}
 	cout << card;
 }
+
+void Game::playRound() {
+	size_t rewardCard = rewardDeck.drawTopCard();
+	currentReward.addCard(rewardCard);
+	size_t card1 = playTurn(player1);
+	size_t card2 = playTurn(player2);
+	cout << player1.username << "'s card: ";
+	printPlayersCard(card1);
+	cout << endl;
+	cout << player2.username << "'s card: ";
+	printPlayersCard(card2);
+	cout << endl;
+	if (card1 > card2) {
+		takeReward(player1);
+		return;
+	}
+	if (card1 < card2) {
+		takeReward(player2);
+		return;
+	}
+	if (!isGameOver()) {
+		cout << "Both players picked the same card!" << endl
+			<< "Play another round to decide who takes the previous and the next card(s)." << endl;
+		return;
+	}
+	cout << endl;
+}
