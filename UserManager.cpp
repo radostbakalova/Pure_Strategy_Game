@@ -74,3 +74,15 @@ std::string UserManager::validatePassword(std::string& password, std::vector<Use
     }
     return password;
 }
+
+void UserManager::registerUser(Player& player, std::vector<UserProfile>& users) {
+    std::string username, password;
+    cout << "Please enter username:" << endl;
+    username = validateUsername(username, users);
+    cout << "Please enter password:" << endl;
+    password = validatePassword(password, users);
+    users.push_back(UserProfile(username, password));
+    player.username = username;
+    player.isLogged = true;
+    cout << "The profile was created successfully!" << endl;
+}
