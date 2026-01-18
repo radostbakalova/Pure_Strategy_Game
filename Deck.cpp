@@ -35,3 +35,12 @@ size_t Deck::drawTopCard() {
 	deck.erase(deck.begin());
 	return topCard;
 }
+
+void Deck::removeCard(size_t value) {
+	for (size_t i = 0; i < deck.size(); i++) {
+		if (deck.at(i) == value) {
+			deck.erase(deck.begin() + i);
+			return;
+		}
+	}
+}
