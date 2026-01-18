@@ -90,3 +90,30 @@ void Game::recordGame(std::string& username, std::string& opponent, bool won1, b
 		}
 	}
 }
+
+void Game::decideWinner(std::vector<UserProfile>& users) {
+	cout << player1.username << "'s score: " << player1.score << endl;
+	cout << player2.username << "'s score: " << player2.score << endl;
+	bool p1won, p2won;
+	if (player1.score > player2.score) {
+		p1won = true;
+		p2won = false;
+		cout << player1.username << " won and "
+			<< player2.username << " lost! Good game!" << endl << endl;
+	}
+	if (player1.score < player2.score) {
+		p1won = false;
+		p2won = true;
+		cout << player2.username << " won and "
+			<< player1.username << " lost! Good game!" << endl << endl;
+	}
+	if (player1.score == player2.score) {
+		p1won = false;
+		p2won = false;
+		cout << "Draw!" << endl << endl;
+	}
+	recordGame(player1.username, player2.username, p1won, p2won, users);
+	recordGame(player2.username, player1.username, p2won, p1won, users);
+	player1.resetPlayerHands();
+	player2.resetPlayerHands();
+}
