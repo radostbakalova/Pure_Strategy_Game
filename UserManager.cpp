@@ -86,3 +86,36 @@ void UserManager::registerUser(Player& player, std::vector<UserProfile>& users) 
     player.isLogged = true;
     cout << "The profile was created successfully!" << endl;
 }
+
+void UserManager::loginUser(Player& player, std::vector<UserProfile>& users) {
+    std::string username, password;
+    size_t profileID;
+    bool isFound = false;
+    while (true) {
+        cout << "Please enter your username:" << endl;
+        while (true) {
+            std::getline(cin, username);
+            for (size_t i = 0; i < users.size(); i++) {
+                if (users.at(i).getUsername() == username) {
+                    profileID = i;
+                    isFound = true;
+                    break;
+                }
+            }
+            if (isFound) {
+                break;
+            }
+            cout << "Wrong username! Please try again." << endl;
+        }
+        cout << "Please enter your password:" << endl;
+        std::getline(cin, password);
+        while (users.at(profileID).getPassword() != password) {
+            cout << "Wrong password! Please try again." << endl;
+            std::getline(cin, password);
+        }
+        player.username = username;
+        player.isLogged = true;
+        cout << "Login successfull!" << endl;
+        break;
+    }
+}
