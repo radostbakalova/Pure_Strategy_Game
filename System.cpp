@@ -55,3 +55,35 @@ size_t System::manageGameChoice() {
 	}
 	return choice;
 }
+
+size_t System::managePlayerChoice() {
+	showPlayerMenu();
+	size_t choice;
+	std::string input;
+	while (true) {
+		std::getline(cin, input);
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(IGNORE_LIMIT, '\n');
+			continue;
+		}
+		if (input.size() > 1) {
+			cout << "Invalid input! Please try again." << endl;
+			continue;
+		}
+		if (input[0] == '1') {
+			choice = 1;
+			break;
+		}
+		if (input[0] == '2') {
+			choice = 2;
+			break;
+		}
+		if (input[0] == '3') {
+			choice = 3;
+			break;
+		}
+		cout << "Invalid input! Please try again." << endl;
+	}
+	return choice;
+}
