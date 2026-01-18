@@ -30,3 +30,16 @@ void UserProfiles::printUserStatistics(std::string username) {
 	}
 	cout << "Could not load the statistics! Please restart the program." << endl;
 }
+
+void UserProfiles::saveDataOn(std::string fileName) {
+	std::ofstream output = std::ofstream(fileName);
+	if (!output.is_open()) {
+		std::cout << "Data could not save in the file." << endl;
+		return;
+	}
+	output << users.size() << endl;
+	for (UserProfile user : users) {
+		user.saveFileData(output);
+	}
+	output.close();
+}
