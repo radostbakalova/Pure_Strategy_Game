@@ -137,3 +137,16 @@ void Game::takeReward(Player& player) {
 	}
 	currentReward.emptyDeck();
 }
+
+size_t Game::playTurn(Player& player) {
+	cout << endl;
+	cout << "The current reward is:" << endl;
+	currentReward.printDeck();
+	cout << "Reward cards you have collected:" << endl;
+	player.rewardCardsCollected.printDeck();
+	cout << player.username << ", please choose a card:" << endl;
+	player.remainingHands.printDeck();
+	size_t card = inputChoice(player);
+	player.remainingHands.removeCard(card);
+	return card;
+}
