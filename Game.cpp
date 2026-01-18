@@ -117,3 +117,12 @@ void Game::decideWinner(std::vector<UserProfile>& users) {
 	player1.resetPlayerHands();
 	player2.resetPlayerHands();
 }
+
+bool Game::isGameOver() {
+	size_t deck1 = player1.remainingHands.getSize();
+	size_t deck2 = player2.remainingHands.getSize();
+	if (deck1 == 0 || deck2 == 0) {
+		return true;
+	}
+	return false;
+}
