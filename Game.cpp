@@ -82,3 +82,11 @@ size_t Game::inputChoice(Player& player) {
 	}
 	return card;
 }
+
+void Game::recordGame(std::string& username, std::string& opponent, bool won1, bool won2, std::vector<UserProfile>& users) {
+	for (UserProfile& user : users) {
+		if (username == user.getUsername()) {
+			user.recordGame(opponent, won1, won2);
+		}
+	}
+}
