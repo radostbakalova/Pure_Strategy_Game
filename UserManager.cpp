@@ -42,3 +42,35 @@ std::string UserManager::validateUsername(std::string& username, std::vector<Use
     }
     return username;
 }
+
+std::string UserManager::validatePassword(std::string& password, std::vector<UserProfile>& users) {
+    while (true) {
+        std::getline(cin, password);
+        if (password.empty()) {
+            cout << "Password cannot be empty! Please try again." << endl;
+            cout << "Please enter valid password:" << endl;
+            continue;
+        }
+        bool isValid = true;
+        for (char symbol : password) {
+            if (symbol == ' ') {
+                cout << "Password cannot contain spaces! Please try again." << endl;
+                cout << "Please enter valid password:" << endl;
+                isValid = false;
+                break;
+            }
+        }
+        for (UserProfile user : users) {
+            if (user.getPassword() == password) {
+                cout << "This password is already taken! Please try again." << endl;
+                cout << "Please enter valid password:" << endl;
+                isValid = false;
+                break;
+            }
+        }
+        if (isValid) {
+            break;
+        }
+    }
+    return password;
+}
