@@ -119,3 +119,7 @@ void UserManager::loginUser(Player& player, std::vector<UserProfile>& users) {
         break;
     }
 }
+
+void UserManager::logoutUser(Player& player) {
+    player.logoutPlayer();
+}
