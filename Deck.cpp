@@ -29,3 +29,9 @@ void Deck::shuffle(unsigned int& seedValue) {
 	}
 	seedValue++;
 }
+
+size_t Deck::drawTopCard() {
+	size_t topCard = deck.front();
+	deck.erase(deck.begin());
+	return topCard;
+}
