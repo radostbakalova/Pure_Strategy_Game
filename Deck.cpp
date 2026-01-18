@@ -48,3 +48,7 @@ void Deck::removeCard(size_t value) {
 void Deck::addCard(size_t value) {
 	deck.push_back(value);
 }
+
+bool Deck::isEmpty() {
+	return deck.empty();
+}
