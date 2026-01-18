@@ -54,3 +54,15 @@ void OpponentStatistics::printStatistics() {
 	}
 	cout << endl;
 }
+
+void OpponentStatistics::saveFileData(std::ofstream& output) {
+	if (!output.good()) {
+		cout << "File is not good for writing." << endl;
+		return;
+	}
+	for (Statistic stat : statistics) {
+		output << stat.opponentName << endl;
+		output << stat.gamesPlayed << endl;
+		output << stat.gamesWon << endl;
+	}
+}
