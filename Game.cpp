@@ -197,3 +197,17 @@ void Game::playRound() {
 	}
 	cout << endl;
 }
+
+void Game::playGame(unsigned int& seedValue, std::vector<UserProfile>& users) {
+	cout << endl;
+	cout << "Let the game begin!" << endl;
+	rewardDeck.initialize();
+	rewardDeck.shuffle(seedValue);
+	player1.remainingHands.initialize();
+	player2.remainingHands.initialize();
+	while (!isGameOver()) {
+		playRound();
+	}
+	cout << "The game is over!" << endl;
+	decideWinner(users);
+}
