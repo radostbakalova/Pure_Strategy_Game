@@ -12,3 +12,9 @@ void Player::resetPlayerHands() {
 	remainingHands.emptyDeck();
 	rewardCardsCollected.emptyDeck();
 }
+
+void Player::logoutPlayer() {
+	username = "";
+	score = 0;
+	isLogged = false;
+}
