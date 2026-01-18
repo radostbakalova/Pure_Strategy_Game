@@ -126,3 +126,14 @@ bool Game::isGameOver() {
 	}
 	return false;
 }
+
+void Game::takeReward(Player& player) {
+	cout << player.username << " gets the hand!" << endl;
+	cout << endl;
+	for (size_t i = 0; i < currentReward.getSize(); i++) {
+		size_t rewardCard = currentReward.At(i);
+		player.rewardCardsCollected.addCard(rewardCard);
+		player.score += rewardCard;
+	}
+	currentReward.emptyDeck();
+}
