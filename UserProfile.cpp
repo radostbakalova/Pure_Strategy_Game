@@ -55,3 +55,15 @@ void UserProfile::printStatistics() {
 	cout << "Games against other players (wins/%):" << endl;
 	opponentStatistics.printStatistics();
 }
+
+void UserProfile::loadFromFile(std::ifstream& input) {
+	if (!input.good()) {
+		cout << "Could not open file." << endl;
+		return;
+	}
+	input >> username;
+	input >> password;
+	input >> totalGamesPlayed;
+	input >> totalGamesWon;
+	opponentStatistics.loadFileData(input);
+}
