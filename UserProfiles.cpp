@@ -20,3 +20,13 @@ void UserProfiles::loadFileData(std::string fileName) {
 	}
 	input.close();
 }
+
+void UserProfiles::printUserStatistics(std::string username) {
+	for (size_t i = 0; i < users.size(); i++) {
+		if (username == users.at(i).getUsername()) {
+			users.at(i).printStatistics();
+			return;
+		}
+	}
+	cout << "Could not load the statistics! Please restart the program." << endl;
+}
