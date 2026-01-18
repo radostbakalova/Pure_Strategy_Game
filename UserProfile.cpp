@@ -67,3 +67,17 @@ void UserProfile::loadFromFile(std::ifstream& input) {
 	input >> totalGamesWon;
 	opponentStatistics.loadFileData(input);
 }
+
+void UserProfile::saveFileData(std::ofstream& output) {
+	if (!output.good()) {
+		cout << "File is not good for writing." << endl;
+		return;
+	}
+	output << username << endl;
+	output << password << endl;
+	output << totalGamesPlayed << endl;
+	output << totalGamesWon << endl;
+	output << opponentStatistics.getSize() << endl;
+	opponentStatistics.saveFileData(output);
+	output << endl;
+}
