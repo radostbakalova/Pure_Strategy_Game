@@ -79,7 +79,7 @@ void Deck::printDeck() {
 			continue;
 		}
 		if (card == 12) {
-			cout << "D  ";
+			cout << "Q  ";
 			continue;
 		}
 		if (card == 13) {

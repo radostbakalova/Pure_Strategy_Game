@@ -71,7 +71,7 @@ size_t Game::inputChoice(Player& player) {
 				card = 11;
 				break;
 			}
-			if (input == "D") {
+			if (input == "Q") {
 				card = 12;
 				break;
 			}
