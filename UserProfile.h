@@ -16,7 +16,6 @@
 #include <string>
 #include <vector>
 #include "OpponentStatistics.h"
-#include <cmath>
 
 struct UserProfile {
 	UserProfile();

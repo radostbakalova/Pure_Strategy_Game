@@ -64,7 +64,9 @@ void UserProfile::printStatistics() {
 	}
 	cout << "Total games played: " << totalGamesPlayed << endl;
 	double wonGamesPercent = ((double)totalGamesWon) / ((double)totalGamesPlayed);
-	wonGamesPercent = std::round(wonGamesPercent * 100) / 100;
+	int firstFourDigits = wonGamesPercent * 10000;
+	wonGamesPercent = firstFourDigits;
+	wonGamesPercent /= 100;
 	cout << "Total games won: " << totalGamesWon << " (" << wonGamesPercent << "%)" << endl;
 	cout << "Games against other players (wins/%):" << endl;
 	opponentStatistics.printStatistics();
